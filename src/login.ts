@@ -238,7 +238,7 @@ const states = [
   },
   {
     name: "TFA instructions",
-    selector: `#idDiv_SAOTCAS_Description`,
+    selector: `#idRichContext_DisplaySign`,
     async handler(
       page: puppeteer.Page,
       selected: puppeteer.ElementHandle
@@ -249,10 +249,10 @@ const states = [
         (description) => description.textContent,
         selected
       );
-      console.log(descriptionMessage);
+      console.log("MFA code: "+ descriptionMessage);
 
       debug("Waiting for response");
-      await page.waitForSelector(`#idDiv_SAOTCAS_Description`, {
+      await page.waitForSelector(`#idRichContext_DisplaySign`, {
         hidden: true,
         timeout: 60000,
       });
@@ -987,3 +987,4 @@ export const login = {
     });
   },
 };
+
